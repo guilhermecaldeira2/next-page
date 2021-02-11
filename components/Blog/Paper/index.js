@@ -8,6 +8,7 @@ import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
+import MaterialLink from "@material-ui/core/Link"
 
 import { useFetch } from "../../../lib/fetcher";
 
@@ -90,9 +91,9 @@ function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug }) {
       <Divider orientation="vertical" flexItem />
       <div className={classes.content}>
         <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
-          <a>
+          <MaterialLink style={{cursor: "pointer"}} color="inherit">
             <Typography variant="h5">{title}</Typography>
-          </a>
+          </MaterialLink>
         </Link>
         <div className={classes.infos}>
           <Chip icon={<Icon>calendar_today</Icon>} label={date} />

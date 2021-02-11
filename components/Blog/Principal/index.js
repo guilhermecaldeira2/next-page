@@ -8,6 +8,7 @@ import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
+import MaterialLink from "@material-ui/core/Link"
 
 import { useFetch } from "../../../lib/fetcher";
 
@@ -100,9 +101,9 @@ function Principal({
       <div className={classes.container}>
         <div className={classes.content}>
           <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
-            <a>
+            <MaterialLink style={{cursor: "pointer"}} color="inherit">
               <Typography variant="h5">{title}</Typography>
-            </a>
+            </MaterialLink>
           </Link>
           <Typography variant="subtitle1">{tags}</Typography>
           <div className={classes.infos}>
