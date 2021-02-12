@@ -11,8 +11,9 @@ import Divider from "@material-ui/core/Divider";
 import MaterialLink from "@material-ui/core/Link"
 
 import { useFetch } from "../../../lib/fetcher";
+import ChipsArray from "../Principal/ChipsArray";
 
-function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug }) {
+function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug, tags }) {
   const useStyles = makeStyles((theme) => ({
     root: {
       width: "90%",
@@ -96,6 +97,7 @@ function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug }) {
           </MaterialLink>
         </Link>
         <div className={classes.infos}>
+          <ChipsArray tags={tags} />
           <Chip icon={<Icon>calendar_today</Icon>} label={date} />
           <Badge
             color="primary"

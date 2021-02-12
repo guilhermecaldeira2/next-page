@@ -3,7 +3,7 @@ title: "Dynamic Routing and Static Generation"
 preview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
 tags: "Lorem, Ipsum, Dolor"
 imgSrc: "/blog/book.jpg"
-date: "09/02/2021"
+date: "10/02/2021"
 author:
   name: JJ Kasper
   picture: "/assets/blog/authors/jj.jpeg"

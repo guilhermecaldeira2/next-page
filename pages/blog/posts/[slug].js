@@ -7,6 +7,7 @@ import { getPostBySlug, getAllPosts } from "../../../lib/api";
 import markdownToHtml from "../../../lib/markdownToHtml";
 
 import Principal from "../../../components/Blog/Principal";
+import Header from "../../../components/Header";
 
 const Post = ({ post }) => {
   const useStyles = makeStyles((theme) => ({
@@ -33,8 +34,29 @@ const Post = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <meta charset="utf-8" />
+        <meta name="language" content="pt-BR" />
+        <title>Blog | {post.title}</title>
+        <meta name="description" content={post.preview} />
+        <meta name="robots" content="all" />
+        <meta name="author" content="Guilherme Caldeira Godoy da Silva" />
+        <meta name="keywords" content={post.tags} />
+
+        <meta property="og:type" content="page" />
+        <meta property="og:url" content="" />
+        <meta property="og:title" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="" />
+
+        <meta property="article:author" content="" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:creator" content="@" />
+        <meta name="twitter:description" content="" />
       </Head>
+      <Header extra="Blog"/>
       <Container maxWidth="lg" className={classes.root}>
         <Principal
           imgSrc={post.imgSrc}
@@ -46,7 +68,7 @@ const Post = ({ post }) => {
           slug={post.slug}
         />
         <div
-          style={{ marginBottom: "100px", width: "90%" }}
+          style={{ marginBottom: "100px", width: "90%", fontSize: "125%", fontFamily: "Montserrat" }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </Container>

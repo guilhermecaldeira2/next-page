@@ -11,6 +11,7 @@ import Divider from "@material-ui/core/Divider";
 import MaterialLink from "@material-ui/core/Link"
 
 import { useFetch } from "../../../lib/fetcher";
+import ChipsArray from "./ChipsArray";
 
 function Principal({
   imgSrc,
@@ -105,7 +106,8 @@ function Principal({
               <Typography variant="h5">{title}</Typography>
             </MaterialLink>
           </Link>
-          <Typography variant="subtitle1">{tags}</Typography>
+          {/* <Typography variant="subtitle1">{tags}</Typography> */}
+          <ChipsArray tags={tags} />
           <div className={classes.infos}>
             <Chip icon={<Icon>calendar_today</Icon>} label={date} />
             <Badge

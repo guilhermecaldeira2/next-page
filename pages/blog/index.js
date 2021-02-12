@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import { getAllPosts } from "../../lib/api";
 import Principal from "../../components/Blog/Principal";
 import BlogPaper from "../../components/Blog/Paper";
+import Header from "../../components/Header";
 
 function Blog({ allPosts }) {
   const heroPost = allPosts[0];
@@ -17,7 +18,6 @@ function Blog({ allPosts }) {
       justifyContent: "center",
       flexDirection: "column",
       alignItems: "center",
-      minHeight: "100vh",
       "& > *": {
         margin: theme.spacing(1),
       },
@@ -29,8 +29,29 @@ function Blog({ allPosts }) {
   return (
     <>
       <Head>
-        <title>Todos os Posts</title>
+        <meta charset="utf-8" />
+        <meta name="language" content="pt-BR" />
+        <title>GCGS Blog</title>
+        <meta name="description" content="Blog com conteúdos de Desenvolvimento de Software, produtividade, chatbots e I.A" />
+        <meta name="robots" content="all" />
+        <meta name="author" content="Guilherme Caldeira Godoy da Silva" />
+        <meta name="keywords" content="Blog, Desenvolvimento, Chatbot, bot, javascript, typescript, node, telegram, WhatsApp, produtividade" />
+
+        <meta property="og:type" content="page" />
+        <meta property="og:url" content="" />
+        <meta property="og:title" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="" />
+
+        <meta property="article:author" content="" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:creator" content="@" />
+        <meta name="twitter:description" content="" />
       </Head>
+      <Header extra="Blog" />
       <Container maxWidth="lg" className={classes.root}>
         <Principal
           imgSrc={heroPost.imgSrc}
@@ -48,6 +69,7 @@ function Blog({ allPosts }) {
             imgSrc={post.imgSrc}
             imgAlt={post.imgAlt}
             title={post.title}
+            tags={post.tags}
             date={post.date}
             preview={post.preview}
             slug={post.slug}
