@@ -15,8 +15,10 @@ import ChipsArray from "../Principal/ChipsArray";
 
 function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug, tags }) {
   const useStyles = makeStyles((theme) => ({
-    root: {
+    link: {
       width: "90%",
+    },
+    root: {
       // height: theme.spacing(55),
       padding: theme.spacing(1),
       color: theme.palette.text.secondary,
@@ -92,40 +94,40 @@ function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug, tags }) {
   const views = data?.total;
 
   return (
-    <Paper className={classes.root}>
-      <div className={classes.imgContainer}>
-        <Image
-          src={imgSrc ?? "/blog/book.jpg"}
-          alt={imgAlt ?? "Learning Book"}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
-      </div>
-      <Divider orientation="vertical" flexItem />
-      <div className={classes.content}>
-        <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
-          <MaterialLink style={{cursor: "pointer"}} color="inherit">
-            <Typography variant="h5">{title}</Typography>
-          </MaterialLink>
-        </Link>
-        <div className={classes.infos}>
-          <ChipsArray tags={tags} />
-          <div className={classes.infoRow}>
-            <Chip icon={<Icon>calendar_today</Icon>} label={date} />
-            <Badge
-              color="primary"
-              badgeContent={views ?? "..."}
-              max={999}
-              showZero
-            >
-              <Icon fontSize="large">pageview</Icon>
-            </Badge>
+    <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
+      <MaterialLink className={classes.link} style={{cursor: "pointer"}} color="inherit">
+        <Paper className={classes.root}>
+          <div className={classes.imgContainer}>
+            <Image
+              src={imgSrc ?? "/blog/book.jpg"}
+              alt={imgAlt ?? "Learning Book"}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
           </div>
-        </div>
-        <Typography variant="subtitle1">{preview}</Typography>
-      </div>
-    </Paper>
+          <Divider orientation="vertical" flexItem />
+          <div className={classes.content}>
+                <Typography variant="h5">{title}</Typography>
+            <div className={classes.infos}>
+              <ChipsArray tags={tags} />
+              <div className={classes.infoRow}>
+                <Chip icon={<Icon>calendar_today</Icon>} label={date} />
+                <Badge
+                  color="primary"
+                  badgeContent={views ?? "..."}
+                  max={999}
+                  showZero
+                >
+                  <Icon fontSize="large">pageview</Icon>
+                </Badge>
+              </div>
+            </div>
+            <Typography variant="subtitle1">{preview}</Typography>
+          </div>
+        </Paper>
+      </MaterialLink>
+    </Link>
   );
 }
 

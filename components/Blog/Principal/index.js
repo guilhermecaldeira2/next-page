@@ -24,9 +24,12 @@ function Principal({
   postPreview,
 }) {
   const useStyles = makeStyles((theme) => ({
-    root: {
+    link: {
       width: "90%",
+    },
+    root: {
       // height: theme.spacing(55),
+      width: "100%",
       padding: theme.spacing(1),
       color: theme.palette.text.secondary,
       position: "relative",
@@ -89,41 +92,41 @@ function Principal({
   const views = data?.total;
 
   return (
-    <Paper className={classes.root}>
-      <div className={classes.container}>
-        <Image
-          src={imgSrc ?? "/blog/book.jpg"}
-          alt={imgAlt ?? "Post Image"}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
-      </div>
-      <div className={classes.container}>
-        <div className={classes.content}>
-          <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
-            <MaterialLink style={{cursor: "pointer"}} color="inherit">
-              <Typography variant="h5">{title}</Typography>
-            </MaterialLink>
-          </Link>
-          {/* <Typography variant="subtitle1">{tags}</Typography> */}
-          <ChipsArray tags={tags} />
-          <div className={classes.infos}>
-            <Chip icon={<Icon>calendar_today</Icon>} label={date} />
-            <Badge
-              color="primary"
-              badgeContent={views ?? "..."}
-              max={999}
-              showZero
-            >
-              <Icon fontSize="large">pageview</Icon>
-            </Badge>
+    <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
+      <MaterialLink  className={classes.link} style={{cursor: "pointer"}} color="inherit">
+        <Paper className={classes.root}>
+          <div className={classes.container}>
+            <Image
+              src={imgSrc ?? "/blog/book.jpg"}
+              alt={imgAlt ?? "Post Image"}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
           </div>
-          <Divider className={classes.divider} />
-          <Typography variant="body1">{preview}</Typography>
-        </div>
-      </div>
-    </Paper>
+          <div className={classes.container}>
+            <div className={classes.content}>
+                  <Typography variant="h5">{title}</Typography>
+              {/* <Typography variant="subtitle1">{tags}</Typography> */}
+              <ChipsArray tags={tags} />
+              <div className={classes.infos}>
+                <Chip icon={<Icon>calendar_today</Icon>} label={date} />
+                <Badge
+                  color="primary"
+                  badgeContent={views ?? "..."}
+                  max={999}
+                  showZero
+                >
+                  <Icon fontSize="large">pageview</Icon>
+                </Badge>
+              </div>
+              <Divider className={classes.divider} />
+              <Typography variant="body1">{preview}</Typography>
+            </div>
+          </div>
+        </Paper>
+      </MaterialLink>
+    </Link>
   );
 }
 
