@@ -69,7 +69,20 @@ function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug, tags }) {
       "& > *": {
         margin: theme.spacing(2),
       },
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: "column"
+      }
     },
+    infoRow: {
+      position: "relative",
+      display: "flex",
+      justifyContent: "flex-start",
+      flexDirection: "row",
+      alignItems: "center",
+      "& > *": {
+        margin: theme.spacing(2),
+      },
+    }
   }));
 
   const classes = useStyles();
@@ -98,15 +111,17 @@ function BlogPaper({ imgSrc, imgAlt, title, date, preview, slug, tags }) {
         </Link>
         <div className={classes.infos}>
           <ChipsArray tags={tags} />
-          <Chip icon={<Icon>calendar_today</Icon>} label={date} />
-          <Badge
-            color="primary"
-            badgeContent={views ?? "..."}
-            max={999}
-            showZero
-          >
-            <Icon fontSize="large">pageview</Icon>
-          </Badge>
+          <div className={classes.infoRow}>
+            <Chip icon={<Icon>calendar_today</Icon>} label={date} />
+            <Badge
+              color="primary"
+              badgeContent={views ?? "..."}
+              max={999}
+              showZero
+            >
+              <Icon fontSize="large">pageview</Icon>
+            </Badge>
+          </div>
         </div>
         <Typography variant="subtitle1">{preview}</Typography>
       </div>

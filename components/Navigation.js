@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     position: "fixed",
     bottom: "0",
     left: "50%",
+    zIndex: "100",
     boxShadow: "0 0 5px 1px #ccc",
     transform: "translate(-50%, -50%)",
     [theme.breakpoints.down("xs")]: {
