@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import theme from '../../styles/theme';
 
 function Header({ extra }) {
   const useStyles = makeStyles({
@@ -11,12 +12,21 @@ function Header({ extra }) {
       alignItems: "flex-end"
     },
     title: {
-      fontSize: '5rem',
+      fontSize: '12.5vw',
       margin: "0 0 0 3rem",
     },
     extra: {
-      fontSize: "2.5rem",
-      padding: "0 0 .6rem .2rem"
+      fontSize: "6vw",
+      margin: "0 0 1.5vw 1vw"
+    },
+    [theme.breakpoints.up('sm')]: {
+      title: {
+        fontSize: '5rem',
+      },
+      extra: {
+        fontSize: "2rem",
+        margin: "0 0 .9rem .2rem"
+      }
     }
   });
   const classes = useStyles()
