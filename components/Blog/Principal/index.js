@@ -8,7 +8,7 @@ import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
-import MaterialLink from "@material-ui/core/Link"
+import MaterialLink from "@material-ui/core/Link";
 
 import { useFetch } from "../../../lib/fetcher";
 import ChipsArray from "./ChipsArray";
@@ -24,62 +24,62 @@ function Principal({
   postPreview,
 }) {
   const useStyles = makeStyles((theme) => ({
-    link: {
-      width: "90%",
-    },
-    root: {
-      // height: theme.spacing(55),
-      width: "100%",
-      padding: theme.spacing(1),
-      color: theme.palette.text.secondary,
-      position: "relative",
-      display: "flex",
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    container: {
-      position: "relative",
-      display: "block",
-      height: "372px",
-      width: "50%",
-      padding: theme.spacing(2),
-      [theme.breakpoints.down("xs")]: {
-        minHeight: "336px",
-        height: "100%",
-        width: "100%",
-      },
-    },
-    content: {
-      position: "relative",
-      display: "flex",
-      justifyContent: "space-evenly",
-      flexDirection: "column",
-      alignItems: "start",
-      height: "100%",
-    },
-    infos: {
-      position: "relative",
-      display: "flex",
-      justifyContent: "flex-start",
-      flexDirection: "row",
-      alignItems: "center",
-      width: "100%",
-      "& > *": {
-        margin: theme.spacing(1),
-      },
-    },
-    divider: {
-      width: "100%",
-    },
     paper: {
       padding: theme.spacing(1),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
-      width: "60%",
-      height: theme.spacing(20),
-      padding: theme.spacing(1),
+      position: "relative",
+      flex: "1",
+    },
+    link: {
+      position: "absolute",
+      top: "0",
+      lef: "0",
+      right: "0",
+      bottom: "0",
+      width: "100%",
+      height: "100%",
+      zIndex: "1",
+    },
+    article: {
+      position: "relative",
+      zIndex: 0,
+      width: "100%",
+    },
+    content: {
+      display: "flex",
+      flexFlow: "row wrap",
+      position: "relative",
+      top: "0",
+      lef: "0",
+      right: "0",
+      bottom: "0",
+      width: "100%",
+      height: "100%",
+      zIndex: "0",
+    },
+    image: {
+      position: "relative",
+      display: "block",
+      minHeight: "273px",
+      minWidth: "273px",
+      flex: "4",
+    },
+    text: {
+      display: "flex",
+      flexFlow: "column wrap",
+      flex: "6",
+      padding: theme.spacing(3),
+      "& > *": {
+        marginBottom: theme.spacing(3),
+      },
+    },
+    infos: {
+      marginTop: theme.spacing(3),
+      "& > *": {
+        marginLeft: theme.spacing(3),
+      },
+    },
+    chips: {
+      width: "30%",
     },
   }));
 
@@ -92,10 +92,13 @@ function Principal({
   const views = data?.total;
 
   return (
-    <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
-      <MaterialLink  className={classes.link} style={{cursor: "pointer"}} color="inherit">
-        <Paper className={classes.root}>
-          <div className={classes.container}>
+    <Paper className={classes.paper}>
+      <article className={classes.article}>
+        <Link href={`/blog/posts/${encodeURIComponent(slug)}`}>
+          <a className={classes.link}></a>
+        </Link>
+        <div className={classes.content}>
+          <div className={classes.image}>
             <Image
               src={imgSrc ?? "/blog/book.jpg"}
               alt={imgAlt ?? "Post Image"}
@@ -104,29 +107,26 @@ function Principal({
               objectPosition="center"
             />
           </div>
-          <div className={classes.container}>
-            <div className={classes.content}>
-                  <Typography variant="h5">{title}</Typography>
-              {/* <Typography variant="subtitle1">{tags}</Typography> */}
-              <ChipsArray tags={tags} />
-              <div className={classes.infos}>
-                <Chip icon={<Icon>calendar_today</Icon>} label={date} />
-                <Badge
-                  color="primary"
-                  badgeContent={views ?? "..."}
-                  max={999}
-                  showZero
-                >
-                  <Icon fontSize="large">pageview</Icon>
-                </Badge>
-              </div>
-              <Divider className={classes.divider} />
-              <Typography variant="body1">{preview}</Typography>
+          <div className={classes.text}>
+            <Typography variant="h5">{title}</Typography>
+            <ChipsArray tags={tags} />
+            <div className={classes.infos}>
+              <Chip icon={<Icon>calendar_today</Icon>} label={date} />
+              <Badge
+                color="primary"
+                badgeContent={views ?? "..."}
+                max={999}
+                showZero
+              >
+                <Icon fontSize="large">pageview</Icon>
+              </Badge>
             </div>
+            <Divider className={classes.divider} />
+            <Typography variant="body1">{preview}</Typography>
           </div>
-        </Paper>
-      </MaterialLink>
-    </Link>
+        </div>
+      </article>
+    </Paper>
   );
 }
 
