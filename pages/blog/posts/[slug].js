@@ -3,11 +3,13 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
+
 import { getPostBySlug, getAllPosts } from "../../../lib/api";
 import markdownToHtml from "../../../lib/markdownToHtml";
-
 import Principal from "../../../components/Blog/Principal";
 import Header from "../../../components/Header";
+import theme from "../../../styles/theme";
+import markdownStyles from "../../../styles/markdown.module.css";
 
 const Post = ({ post }) => {
   const useStyles = makeStyles((theme) => ({
@@ -34,29 +36,21 @@ const Post = ({ post }) => {
   return (
     <>
       <Head>
-        <meta charset="utf-8" />
-        <meta name="language" content="pt-BR" />
-        <title>Blog | {post.title}</title>
-        <meta name="description" content={post.preview} />
-        <meta name="robots" content="all" />
-        <meta name="author" content="Guilherme Caldeira Godoy da Silva" />
-        <meta name="keywords" content={post.tags} />
-
-        <meta property="og:type" content="page" />
-        <meta property="og:url" content="" />
-        <meta property="og:title" content="" />
-        <meta property="og:image" content="" />
-        <meta property="og:description" content="" />
-
-        <meta property="article:author" content="" />
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@" />
-        <meta name="twitter:title" content="" />
-        <meta name="twitter:creator" content="@" />
-        <meta name="twitter:description" content="" />
+          
+        <meta charset="utf-8" />
+            
+        <meta name="language" content="pt-BR" />
+            <title>Blog | {post.title}</title>
+            
+        <meta name="description" content={post.preview} />
+            
+        <meta name="robots" content="all" />
+            
+        <meta name="author" content="Guilherme Caldeira Godoy da Silva" />
+            
+        <meta name="keywords" content={post.tags} />
       </Head>
-      <Header extra="Blog"/>
+      <Header extra="Blog" />
       <Container maxWidth="lg" className={classes.root}>
         <Principal
           imgSrc={post.imgSrc}
@@ -68,7 +62,14 @@ const Post = ({ post }) => {
           slug={post.slug}
         />
         <div
-          style={{ marginBottom: "100px", width: "90%", fontSize: "125%", fontFamily: "Montserrat" }}
+          style={{
+            marginBottom: "100px",
+            width: "90%",
+            fontSize: "125%",
+            fontFamily: "Montserrat",
+            color: theme.palette.primary,
+          }}
+          className={markdownStyles["markdown"]}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </Container>
