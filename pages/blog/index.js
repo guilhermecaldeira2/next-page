@@ -41,7 +41,7 @@ function Blog({ allPosts }) {
         <meta charset="utf-8" />
             
         <meta name="language" content="pt-BR" />
-            <title>GCGS Blog</title>
+            <title>Blog | Guilherme Caldeira</title>
             
         <meta
           name="description"

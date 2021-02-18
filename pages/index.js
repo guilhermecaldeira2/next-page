@@ -82,7 +82,7 @@ export default function Home() {
         <meta charset="utf-8" />
           
         <meta name="language" content="pt-BR" />
-          <title>GCGS Página Principal</title>  
+          <title>Página Principal</title>  
         <meta
           name="description"
           content="Chatbots | I.A | Desenvolvimento | Produtividade"
