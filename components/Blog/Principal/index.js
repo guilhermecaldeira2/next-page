@@ -8,7 +8,6 @@ import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
-import MaterialLink from "@material-ui/core/Link";
 
 import { useFetch } from "../../../lib/fetcher";
 import ChipsArray from "./ChipsArray";
@@ -27,7 +26,7 @@ function Principal({
     paper: {
       padding: theme.spacing(1),
       position: "relative",
-      flex: "1",
+      width: "100%",
     },
     link: {
       position: "absolute",

@@ -12,8 +12,8 @@ function Header({ extra }) {
       alignItems: "flex-end"
     },
     title: {
-      fontSize: '12.5vw',
-      margin: "0 0 0 3rem",
+      fontSize: '7.5vw',
+      margin: "0 0 0 1rem",
     },
     extra: {
       fontSize: "6vw",
@@ -21,18 +21,18 @@ function Header({ extra }) {
     },
     [theme.breakpoints.up('sm')]: {
       title: {
-        fontSize: '5rem',
+        fontSize: '3rem',
       },
       extra: {
-        fontSize: "2rem",
-        margin: "0 0 .9rem .2rem"
+        fontSize: "1.5rem",
+        margin: "0 0 .35rem .2rem"
       }
     }
   });
   const classes = useStyles()
   return (
     <header className={classes.root}>
-      <h1 className={classes.title}>GCGS</h1>
+      <h1 className={classes.title}>Guilherme Caldeira</h1>
       <span className={classes.extra}>{extra}</span>
     </header>
   );

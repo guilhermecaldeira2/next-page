@@ -54,7 +54,7 @@ export default function SimpleBottomNavigation() {
         label="Blog"
         icon={<Icon>article</Icon>}
       />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+      {/* <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
     </BottomNavigation>
   );
 }
